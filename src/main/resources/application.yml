@@ -5,6 +5,12 @@ spring:
     password: erperp
   jpa:
     hibernate.ddl-auto: create
+  profiles:
+    active: dev
+  security:
+    user:
+      name: user
+      password: password
 
 logging:
   level:
