@@ -33,16 +33,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 //            ApplicationUser creds = new ObjectMapper()
 //                    .readValue(request.getInputStream(), ApplicationUser.class);
 
-            ApplicationUser creds = new ApplicationUser(-1, request.getParameter("username"), request.getParameter("password"));
+            String userName = request.getParameter("username");
+            String password = request.getParameter("password");
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            creds.getUsername(),
-                            creds.getPassword(),
+                            userName,
+                            password,
                             new ArrayList<>())
             );
 
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
