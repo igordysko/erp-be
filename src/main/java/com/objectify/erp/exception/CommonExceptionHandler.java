@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -16,7 +18,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(CommonExceptionHandler.class);
 
     @ExceptionHandler(value = { ResourceNotFoundException.class })
-    protected ResponseEntity<Object> handleConflict(ResourceNotFoundException ex, WebRequest request) {
+    protected ResponseEntity<Object> handleResourceNotFound(ResourceNotFoundException ex, WebRequest request) {
         LOGGER.debug("Resource not found. Returning 404", ex);
         return handleExceptionInternal(ex, null,
                 new HttpHeaders(), HttpStatus.NOT_FOUND, request);
