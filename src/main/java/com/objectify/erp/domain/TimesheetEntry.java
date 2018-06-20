@@ -5,22 +5,23 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.List;
+import javax.persistence.ManyToOne;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Getter @Setter @NoArgsConstructor @EqualsAndHashCode @ToString
-public class Person {
+public class TimesheetEntry {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String name;
+    private LocalDate workDate;
 
-    private String surname;
+    private BigDecimal workDuration;
 
-    @OneToMany(mappedBy = "person")
-    private List<TimesheetEntry> timesheetEntries;
+    @ManyToOne
+    private Person person;
 
 }
