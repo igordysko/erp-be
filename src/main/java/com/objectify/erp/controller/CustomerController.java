@@ -35,7 +35,7 @@ public class CustomerController {
         Customer customer = new Customer();
         customer.setName(name);
 
-        customerDao.save(customer);
+        customer = customerDao.save(customer);
         return CustomerDto.from(customer);
     }
 
@@ -51,7 +51,7 @@ public class CustomerController {
         Customer customer = optionalCustomer.get();
         customer.setName(name);
 
-        customerDao.save(customer);
+        customer = customerDao.save(customer);
         return CustomerDto.from(customer);
     }
 

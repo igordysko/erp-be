@@ -7,7 +7,7 @@ spring:
   jpa:
     hibernate.ddl-auto: create
   profiles:
-    active: prod
+    active: dev
   security:
     user:
       name: user
