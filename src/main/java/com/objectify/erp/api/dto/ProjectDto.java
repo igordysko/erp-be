@@ -1,15 +1,17 @@
 package com.objectify.erp.api.dto;
 
-public class ProjectDto {
+import com.objectify.erp.domain.model.Project;
+import org.immutables.value.Value;
 
-    private String name;
+@Value.Immutable
+public abstract class ProjectDto {
 
-    public String getName() {
-        return name;
-    }
+    public abstract String getName();
 
-    public ProjectDto setName(String name) {
-        this.name = name;
-        return this;
+    public static ProjectDto from(Project project) {
+        return ImmutableProjectDto
+                .builder()
+                .name(project.getName())
+                .build();
     }
 }

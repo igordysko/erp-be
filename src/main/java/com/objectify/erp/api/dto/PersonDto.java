@@ -1,43 +1,22 @@
 package com.objectify.erp.api.dto;
 
 import com.objectify.erp.domain.model.Person;
+import org.immutables.value.Value;
 
-public class PersonDto {
+@Value.Immutable
+public abstract class PersonDto {
 
-    private Long id;
+    public abstract Long getId();
 
-    private String name;
+    public abstract String getName();
 
-    private String surname;
-
-    public Long getId() {
-        return id;
-    }
-
-    public PersonDto setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public PersonDto setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public PersonDto setSurname(String surname) {
-        this.surname = surname;
-        return this;
-    }
+    public abstract String getSurname();
 
     public static PersonDto from(Person person) {
-        return new PersonDto().setId(person.getId()).setName(person.getName()).setSurname(person.getSurname());
+        return ImmutablePersonDto.builder()
+                .id(person.getId())
+                .name(person.getName())
+                .surname(person.getSurname())
+                .build();
     }
 }

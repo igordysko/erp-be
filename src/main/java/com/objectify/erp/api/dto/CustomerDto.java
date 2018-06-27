@@ -1,32 +1,19 @@
 package com.objectify.erp.api.dto;
 
 import com.objectify.erp.domain.model.Customer;
+import org.immutables.value.Value;
 
-public class CustomerDto {
+@Value.Immutable
+public abstract class CustomerDto {
 
-    private Long id;
+    public abstract Long getId();
 
-    private String name;
-
-    public Long getId() {
-        return id;
-    }
-
-    public CustomerDto setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public CustomerDto setName(String name) {
-        this.name = name;
-        return this;
-    }
+    public abstract String getName();
 
     public static CustomerDto from(Customer customer) {
-        return new CustomerDto().setName(customer.getName()).setId(customer.getId());
+        return ImmutableCustomerDto.builder()
+                .id(customer.getId())
+                .name(customer.getName())
+                .build();
     }
 }

@@ -23,7 +23,7 @@ public class ProjectController {
         List<Project> projectEntities = projectDao.findAll();
         return projectEntities
                 .stream()
-                .map(entity -> new ProjectDto().setName(entity.getName()))
+                .map(entity -> ProjectDto.from(entity))
                 .collect(Collectors.toList());
 
     }
