@@ -11,6 +11,9 @@ public abstract class CustomerDto {
     public abstract String getName();
 
     public static CustomerDto from(Customer customer) {
+        if (customer == null) {
+            return null;
+        }
         return ImmutableCustomerDto.builder()
                 .id(customer.getId())
                 .name(customer.getName())

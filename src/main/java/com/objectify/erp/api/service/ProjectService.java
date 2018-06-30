@@ -1,7 +1,7 @@
 package com.objectify.erp.api.service;
 
 import com.objectify.erp.api.dto.ProjectDto;
-import com.objectify.erp.api.dto.ProjectRequest;
+import com.objectify.erp.api.request.ProjectRequest;
 import com.objectify.erp.domain.dao.CustomerDao;
 import com.objectify.erp.domain.dao.ProjectDao;
 import com.objectify.erp.domain.exception.ResourceNotFoundException;
@@ -20,40 +20,55 @@ public class ProjectService {
     private ProjectDao projectDao;
 
     @Autowired
-    private CustomerDao customerDao;
+    private CustomerService customerService;
 
     @Transactional
     public ProjectDto createProject(ProjectRequest projectRequest) {
-        Long customerId = projectRequest.getCustomerId();
-        if (customerId == null) {
-            throw new IllegalArgumentException("Customer id is null");
-        }
-
-        Optional<Customer> customerOpt = customerDao.findById(customerId);
-        if (!customerOpt.isPresent()) {
-            throw new ResourceNotFoundException("Customer not found. Id: " + customerId);
-        }
-
-        Project project = new Project();
-        project.setBudget(projectRequest.getBudget());
-        project.setEndDate(projectRequest.getEndDate());
-        project.setStartDate(projectRequest.getStartDate());
-        project.setName(projectRequest.getName());
-        project.setCustomer(customerOpt.get());
+        Customer customer = customerService.findCustomerById(projectRequest.getCustomerId());
+        Project project = setValuesToEntity(new Project(), customer, projectRequest);
         project = projectDao.save(project);
         return ProjectDto.from(project);
     }
 
     @Transactional
-    public ProjectDto updateProject(Long projectId, ProjectDto projectDto) {
+    public ProjectDto updateProject(Long projectId, ProjectRequest projectRequest) {
         Optional<Project> projectOpt = projectDao.findById(projectId);
         if (!projectOpt.isPresent()) {
             throw new ResourceNotFoundException("Project not found. Id: " + projectId);
         }
-
-        Project project = projectDto.setValuesToEntity(projectOpt.get());
+        Customer customer = customerService.findCustomerById(projectRequest.getCustomerId());
+        Project project = setValuesToEntity(projectOpt.get(), customer, projectRequest);
         project = projectDao.save(project);
         return ProjectDto.from(project);
     }
 
+    @Transactional
+    public ProjectDto findProjectById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Customer id is null");
+        }
+
+        Optional<Project> projectOpt = projectDao.findById(id);
+        if (!projectOpt.isPresent()) {
+            throw new ResourceNotFoundException("Project does not exist. Id: " + id);
+        }
+        return ProjectDto.from(projectOpt.get());
+    }
+
+    @Transactional
+    public void deleteProjectById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Customer id is null");
+        }
+        projectDao.deleteById(id);
+    }
+
+    private Project setValuesToEntity(Project project, Customer customer, ProjectRequest projectRequest) {
+        project.setBudget(projectRequest.getBudget());
+        project.setEndDate(projectRequest.getEndDate());
+        project.setStartDate(projectRequest.getStartDate());
+        project.setName(projectRequest.getName());
+        project.setCustomer(customer);
+        return project;
+    }
 }

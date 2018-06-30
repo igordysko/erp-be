@@ -1,26 +1,16 @@
-package com.objectify.erp.api.dto;
+package com.objectify.erp.api.request;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class ProjectRequest {
 
-    private Long id;
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;
     private BigDecimal estimatedCosts;
     private BigDecimal budget;
     private Long customerId;
-
-    public Long getId() {
-        return id;
-    }
-
-    public ProjectRequest setId(Long id) {
-        this.id = id;
-        return this;
-    }
 
     public String getName() {
         return name;

@@ -1,5 +1,6 @@
 package com.objectify.erp.api.dto;
 
+import com.objectify.erp.domain.dao.CustomerDao;
 import com.objectify.erp.domain.model.Project;
 import org.immutables.value.Value;
 
@@ -39,6 +40,7 @@ public abstract class ProjectDto {
                 .endDate(project.getEndDate())
                 .estimatedCosts(project.getEstimatedCosts())
                 .budget(project.getBudget())
+                .customer(CustomerDto.from(project.getCustomer()))
                 .build();
     }
 
