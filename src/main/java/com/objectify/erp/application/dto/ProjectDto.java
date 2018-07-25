@@ -1,6 +1,5 @@
-package com.objectify.erp.api.dto;
+package com.objectify.erp.application.dto;
 
-import com.objectify.erp.domain.dao.CustomerDao;
 import com.objectify.erp.domain.model.Project;
 import org.immutables.value.Value;
 

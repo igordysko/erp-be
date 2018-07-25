@@ -1,8 +1,8 @@
-package com.objectify.erp.api.controller;
+package com.objectify.erp.application.controller;
 
-import com.objectify.erp.api.dto.ProjectDto;
-import com.objectify.erp.api.request.ProjectRequest;
-import com.objectify.erp.api.service.ProjectService;
+import com.objectify.erp.application.dto.ProjectDto;
+import com.objectify.erp.application.request.ProjectRequest;
+import com.objectify.erp.application.service.ProjectService;
 import com.objectify.erp.domain.dao.ProjectDao;
 import com.objectify.erp.domain.model.Project;
 import org.springframework.beans.factory.annotation.Autowired;

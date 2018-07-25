@@ -1,4 +1,4 @@
-package com.objectify.erp.api.dto;
+package com.objectify.erp.application.dto;
 
 import com.objectify.erp.domain.model.Customer;
 import org.immutables.value.Value;

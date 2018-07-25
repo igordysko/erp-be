@@ -1,4 +1,4 @@
-package com.objectify.erp.api.controller;
+package com.objectify.erp.application.controller;
 
 import com.objectify.erp.domain.exception.ResourceNotFoundException;
 import org.slf4j.Logger;

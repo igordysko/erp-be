@@ -1,4 +1,4 @@
-package com.objectify.erp.api.service;
+package com.objectify.erp.application.service;
 
 import com.objectify.erp.domain.dao.CustomerDao;
 import com.objectify.erp.domain.exception.ResourceNotFoundException;

@@ -1,7 +1,7 @@
-package com.objectify.erp.api.controller;
+package com.objectify.erp.application.controller;
 
 import com.objectify.erp.domain.model.Customer;
-import com.objectify.erp.api.dto.CustomerDto;
+import com.objectify.erp.application.dto.CustomerDto;
 import com.objectify.erp.domain.exception.ResourceNotFoundException;
 import com.objectify.erp.domain.dao.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;

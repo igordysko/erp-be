@@ -1,8 +1,7 @@
-package com.objectify.erp.api.service;
+package com.objectify.erp.application.service;
 
-import com.objectify.erp.api.dto.ProjectDto;
-import com.objectify.erp.api.request.ProjectRequest;
-import com.objectify.erp.domain.dao.CustomerDao;
+import com.objectify.erp.application.dto.ProjectDto;
+import com.objectify.erp.application.request.ProjectRequest;
 import com.objectify.erp.domain.dao.ProjectDao;
 import com.objectify.erp.domain.exception.ResourceNotFoundException;
 import com.objectify.erp.domain.model.Customer;

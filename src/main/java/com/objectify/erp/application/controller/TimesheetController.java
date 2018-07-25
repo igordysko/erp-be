@@ -1,8 +1,8 @@
-package com.objectify.erp.api.controller;
+package com.objectify.erp.application.controller;
 
 import com.objectify.erp.domain.dao.TimesheetEntryDao;
 import com.objectify.erp.domain.model.TimesheetEntry;
-import com.objectify.erp.api.dto.TimesheetEntryDto;
+import com.objectify.erp.application.dto.TimesheetEntryDto;
 import com.objectify.erp.domain.service.TimesheetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;

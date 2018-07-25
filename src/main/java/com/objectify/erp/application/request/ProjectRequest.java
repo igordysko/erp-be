@@ -1,4 +1,4 @@
-package com.objectify.erp.api.request;
+package com.objectify.erp.application.request;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

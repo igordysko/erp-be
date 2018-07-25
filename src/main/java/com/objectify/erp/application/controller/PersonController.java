@@ -1,8 +1,8 @@
-package com.objectify.erp.api.controller;
+package com.objectify.erp.application.controller;
 
 import com.objectify.erp.domain.dao.PersonDao;
 import com.objectify.erp.domain.model.Person;
-import com.objectify.erp.api.dto.PersonDto;
+import com.objectify.erp.application.dto.PersonDto;
 import com.objectify.erp.domain.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
